@@ -1,0 +1,22 @@
+<div class="card article">
+	<img class="card-img-top" src="{{ article.urlToImage }}">
+	<h3 class="card-header">{{ article.title }}</h3>
+	<div class="card-body">
+		<h4>Recommended by: {{ article.recommended }}</h4>
+		<h4>Description</h4>
+		{{ article.description }}
+		<hr>
+		<h4>Summary</h4>
+		<div *ngIf="article.summary.length; else elseBlock">
+			<span *ngFor="let sentence of article.summary">
+				{{ sentence }}
+			</span>
+		</div>
+		<ng-template #elseBlock><div class="alert alert-warning">No summary has been generated yet!</div></ng-template>
+	</div>
+	<footer class="card-footer">
+		<button class="btn btn-primary mr-2" *ngIf="!article.summary.length" (click)="generateSummary(article._id)">Generate Summary</button>
+		<button class="btn btn-outline-primary mr-2" (click)="recommend(article._id)">Recommend Article</button>
+		<a class="btn btn-outline-secondary" href="{{ article.url }}" target="_blank">View Article</a>
+	</footer>
+</div>

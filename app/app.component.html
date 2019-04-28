@@ -1,0 +1,16 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">{{ title }}</a>
+</nav>
+<main class="container-fluid">
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+		  <h2>Articles</h2>
+		  <section *ngFor="let article of articleList">
+		    <app-article [article]="article"></app-article>
+		  </section>
+		</div>
+	</div>
+</main>
+
+<router-outlet></router-outlet>
